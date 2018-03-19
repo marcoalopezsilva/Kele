@@ -24,4 +24,15 @@ class Kele
       @user_data["id"]
     end
 
+    def get_mentor_availability(mentor_id)
+      #First I need to construct a path I can pass to the get method
+      mentor_path = ""
+      mentor_path = mentor_path + "/mentors/" + mentor_id.to_s + "/student_availability"
+      #Next line gets the information, by passing the mentor_path and authentication token
+      response = self.class.get(mentor_path,  headers: {"authorization" => @auth_token })
+      #Then I need to parse the response, and select only "available" slots (i.e. those with "booked" == nil)
+      mentor_schedule = JSON.parse(response.body)
+      @mentor_availability = mentor_schedule.select{ |item| item["booked"] == nil }
+    end
+
 end
