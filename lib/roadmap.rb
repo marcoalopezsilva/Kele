@@ -7,15 +7,13 @@ module Roadmap
   include HTTParty
 
   def get_roadmap(chain_id)
-    roadmap_path = ""
-    roadmap_path += "/roadmaps/" + chain_id.to_s
+    roadmap_path = "/roadmaps/" + chain_id.to_s
     response = self.class.get(roadmap_path, headers: {"authorization" => @auth_token })
     @roadmap = JSON.parse(response.body)
   end
 
   def get_checkpoint(checkpoint_id)
-    checkpoint_path =""
-    checkpoint_path += "/checkpoints/" + checkpoint_id.to_s
+    checkpoint_path = "/checkpoints/" + checkpoint_id.to_s
     response = self.class.get(checkpoint_path, headers: {"authorization" => @auth_token })
     @checkpoint = JSON.parse(response.body)
   end
