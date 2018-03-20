@@ -19,9 +19,8 @@ class Kele
     def get_me
       response = self.class.get("/users/me", headers: {"authorization" => @auth_token })
       @user_data = JSON.parse(response.body)
-      #puts @user_data
-      #puts "User id: #{@user_data["id"]}"
-      @user_data["id"]
+      # Next line if we want the method to return id only
+      #@user_data["id"]
     end
 
     def get_mentor_availability(mentor_id)
@@ -30,9 +29,10 @@ class Kele
       mentor_path = mentor_path + "/mentors/" + mentor_id.to_s + "/student_availability"
       #Next line gets the information, by passing the mentor_path and authentication token
       response = self.class.get(mentor_path,  headers: {"authorization" => @auth_token })
-      #Then I need to parse the response, and select only "available" slots (i.e. those with "booked" == nil)
-      mentor_schedule = JSON.parse(response.body)
-      @mentor_availability = mentor_schedule.select{ |item| item["booked"] == nil }
+      #Then I need to parse the response
+      @mentor_schedule = JSON.parse(response.body)
+      #Next line if we want to , and select only "available" slots (i.e. those with "booked" == nil)
+      #@mentor_availability = mentor_schedule.select{ |item| item["booked"] == nil }
     end
 
 end
