@@ -1,8 +1,14 @@
 require 'httparty'
+require 'json'
+# Next line: we have to require the Roadmap module
+require 'roadmap'
 
 class Kele
 
     include HTTParty
+    # Next line: we have to include the Roadmap module so we can use it from the Kele class
+    include Roadmap
+
     base_uri 'https://www.bloc.io/api/v1'
 
     def initialize(username, password)

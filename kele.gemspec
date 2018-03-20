@@ -7,11 +7,13 @@ Gem::Specification.new do |s|
    s.description   = 'A client for the Bloc API'
    s.authors       = ['Marco Lopez-Silva']
    s.email         = 'mlopez@fundacionidea.org.mx'
-   s.files         = ['lib/kele.rb']
+   # At 's.files' we have to include files for main code and modules
+   s.files         = ['lib/kele.rb', 'lib/roadmap.rb']
    s.require_paths = ["lib"]
    s.homepage      =
      'http://rubygems.org/gems/kele'
    s.license       = 'MIT'
    s.add_runtime_dependency 'httparty', '~> 0.13'
-   s.add_runtime_dependency 'json', '~> 1.8'
+   # I changed next line because of conflict with '1.8'
+   s.add_runtime_dependency 'json', '~> 2.1'
  end
