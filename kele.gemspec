@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
    s.authors       = ['Marco Lopez-Silva']
    s.email         = 'mlopez@fundacionidea.org.mx'
    # At 's.files' we have to include files for main code and modules
-   s.files         = ['lib/kele.rb', 'lib/roadmap.rb']
+   s.files         = ['lib/kele.rb', 'lib/roadmap.rb', 'lib/messages.rb']
    s.require_paths = ["lib"]
    s.homepage      =
      'http://rubygems.org/gems/kele'
